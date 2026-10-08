@@ -7,7 +7,8 @@ from pathlib import Path
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 
-from .config import (
+from src import config
+from src.config import (
     OUTPUT_DIR,
     MODEL_DIR,
     MAX_SEQUENCE_LENGTH,

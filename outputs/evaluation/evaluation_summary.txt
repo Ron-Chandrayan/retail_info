@@ -1,0 +1,130 @@
+RECOMMENDATION SYSTEM EVALUATION
+================================
+
+Total unique users:
+1,407,580
+
+Training users:
+5,001
+
+Remaining unseen test users:
+1,407,579
+
+Eligible test users (>=5 interactions):
+81,620
+
+Evaluated users:
+81,620
+
+Candidate-reachable users:
+1,178
+
+Candidate-unreachable users:
+80,442
+
+Candidate reach rate:
+0.014433
+
+Candidate items:
+95
+
+Top-K:
+5
+
+
+PRIMARY MODEL METRICS
+---------------------
+
+These metrics are calculated only for users whose future
+contains at least one item from the candidate pool.
+
+Hit Rate@5:
+0.324000
+
+Precision@5:
+0.064800
+
+Recall@5:
+0.301500
+
+NDCG@5:
+0.168500
+
+
+POPULARITY BASELINE
+-------------------
+
+Hit Rate@5:
+0.286078
+
+Precision@5:
+0.057216
+
+Recall@5:
+0.274237
+
+NDCG@5:
+0.125076
+
+
+ALL-USER DIAGNOSTIC METRICS
+---------------------------
+
+These include users whose future contains no candidate
+items, so they are intentionally reported only as diagnostics.
+
+Hit Rate@5:
+0.004676
+
+Precision@5:
+0.000935
+
+Recall@5:
+0.004351
+
+NDCG@5:
+0.002432
+
+
+CATALOG
+-------
+
+Unique recommended items:
+43
+
+Catalog coverage:
+0.452632
+
+Total recommendations:
+408,100
+
+Duplicate user-item recommendations:
+0
+
+
+TIMING
+------
+
+Evaluation time:
+687.57 seconds
+
+Average time per evaluated user:
+0.008424 seconds
+
+
+METHODOLOGY
+-----------
+
+- Users in user_embeddings.csv are treated as training users.
+- Remaining users are treated as unseen test users.
+- Test users require at least 5 interactions.
+- Each test user uses a chronological 80/20 split.
+- Historical 80% is used to generate recommendations.
+- Future 20% is used as ground truth.
+- Transformer is used only in inference mode.
+- Existing recommendation weights are preserved.
+- Recency uses historical interactions only.
+- Segment-item affinity uses training-user events only.
+- Impossible ground-truth items outside the candidate pool are
+  not counted in the primary candidate-restricted metrics.
+- A popularity-only baseline is evaluated on the same candidate pool.
